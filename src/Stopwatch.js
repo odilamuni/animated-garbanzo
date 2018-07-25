@@ -5,7 +5,7 @@ import TimeDisplay from './TimeDisplay.js';
 import styled from 'styled-components';
 
 const StopwatchApp = styled.div`
-    background-color: #4f7c99;
+    background-color: #3166bc;
     padding-top: 10%;
     
     
