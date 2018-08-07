@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import FaPlay from 'react-icons/lib/fa/play-circle';
-import FaPause from 'react-icons/lib/fa/pause-circle';
+
 
 const Button = styled.div`
     
@@ -12,18 +11,18 @@ const Button = styled.div`
     
 `;
 
-const Play = styled(FaPlay)`
+const Play = styled.div`
     border-radius: 50px;
     background-color: #fcfcf9;
-    color: #0e4366;
     margin: auto;
     height: 4em;
     width: 4em;
     display:flex;
+    margin-bottom: 2em;
 
 `;
 
-const Pause = styled(FaPause)`
+const Pause = styled.div`
     border-radius: 50px;
     background-color: #fcfcf9;
     box-shadow: 0px 0px 15px 2px #fcfcf9;
@@ -37,9 +36,11 @@ const Pause = styled(FaPause)`
 const Text = styled.p`
     font-family: 'Nova Mono', monospace;
     text-align: center;
-    color: #fcfcf9;
     display: flex;
     font-size: 1em;
+    color: #0e4366;
+    justify-content: center;
+    margin-left: 10px;
     
 `;
 
@@ -63,23 +64,26 @@ export default function StartPauseButton (props){
         if((!props.isRunning)&&(props.previousElapsedTime !== 0)){
             text = "Resume";
             return <Button>
-            <Play type="button" onClick={props.onStartOrPause} isRunning={props.isRunning} previousElapsedTime={props.elapsedTime}></Play>
-                <Text>{text}</Text>
+            <Play type="button" onClick={props.onStartOrPause} isRunning={props.isRunning} previousElapsedTime={props.elapsedTime}><Text>{text}</Text></Play>
+                
                 </Button>;
         }
         if(props.isRunning){
             text = "Pause";
             return <Button>
-            <Pause type="button" onClick={props.onStartOrPause} isRunning={props.isRunning} previousElapsedTime={props.elapsedTime}></Pause>
-             <Text>
+            <Pause type="button" onClick={props.onStartOrPause} isRunning={props.isRunning} previousElapsedTime={props.elapsedTime}>
+            <Text>
             {text}
             </Text>
+            </Pause>
+             
             </Button>;
         }
             
         
         return <Button>
-        <Play type="button" onClick={props.onStartOrPause} isRunning={props.isRunning} previousElapsedTime={props.elapsedTime}></Play>
+        <Play type="button" onClick={props.onStartOrPause} isRunning={props.isRunning} previousElapsedTime={props.elapsedTime}>
         <Text>{text}</Text>
+        </Play>
         </Button>;
 } 
